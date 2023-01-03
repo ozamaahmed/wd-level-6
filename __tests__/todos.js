@@ -1,4 +1,3 @@
-
 const request = require("supertest");
 
 const db = require("../models/index");
@@ -75,16 +74,15 @@ describe("Todo Application", function () {
   test("Deletes a todo with the given ID if it exists and sends a boolean response", async () => {
     // FILL IN YOUR CODE HERE
     const response = await agent.post("/todos").send({
-      title: "Buy notes",
-      dueDate: new Date().toISOString(),
-      completed: false,
+      title : "Buy chocolates",
+      dueDate : new Date.toISOString(),
+      completed : false,
     });
-
     const parseResponse = JSON.parse(response.text);
     const todoID = parseResponse.id;
 
     const deleteResponse = await agent.delete(`/todos/${todoID}`).send();
     const parsedDeleteResponse = JSON.parse(deleteResponse.text);
-    expect(parsedDeleteResponse).toBe(true);
-  });
+    except(parsedDeleteResponse).toBe(true);
+    });
 });
